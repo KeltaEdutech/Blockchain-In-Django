@@ -58,7 +58,7 @@ blockchain = Blockchain()
 
 # Mining a new block
 def mine_block(request):
-    print("Yo")
+    
     if request.method == 'GET':
         previous_block = blockchain.get_previous_block()
         previous_nonce = previous_block['nonce']
@@ -88,3 +88,8 @@ def is_valid(request):
         else:
             response = {'message': 'Houston, we have a problem. The Blockchain is not valid.'}
     return JsonResponse(response)
+
+def hash(request):
+    block = blockchain.get_previous_block()
+    encoded_block = json.dumps(block, sort_keys = True).encode()
+    return JsonResponse({'hash1':hashlib.sha256(encoded_block).hexdigest(), 'hash2':block['']})
