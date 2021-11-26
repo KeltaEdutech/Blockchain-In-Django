@@ -36,6 +36,7 @@ class Blockchain:
         encoded_block = json.dumps(block, sort_keys = True).encode()
         return hashlib.sha256(encoded_block).hexdigest()
 
+
     def is_chain_valid(self, chain):
         previous_block = chain[0]
         block_index = 1
